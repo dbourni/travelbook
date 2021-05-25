@@ -45,7 +45,7 @@ class Travel
     private $durationType;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options = {"default" = 1})
      */
     private $public;
 
@@ -55,7 +55,7 @@ class Travel
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="travel")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $country;
 
@@ -158,12 +158,12 @@ class Travel
         return $this;
     }
 
-    public function getCountry(): ?Country
+    public function getCountry(): ?string
     {
         return $this->country;
     }
 
-    public function setCountry(?Country $country): self
+    public function setCountry(?string $country): self
     {
         $this->country = $country;
 

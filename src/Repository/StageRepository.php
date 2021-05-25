@@ -19,6 +19,17 @@ class StageRepository extends ServiceEntityRepository
         parent::__construct($registry, Stage::class);
     }
 
+    public function countForOneTravel($travelId): int
+    {
+        return $this->createQueryBuilder('s')
+            ->select('count(s.id)')
+            ->andWhere('s.travel = :val')
+            ->setParameter('val', $travelId)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
     // /**
     //  * @return Stage[] Returns an array of Stage objects
     //  */

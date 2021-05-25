@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des voyages{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Liste des voyages</h1>
+    </div>
+    <div>
+        {% for travel in travels %}
+            <p>
+                {{ travel.title }} -
+                <a href="{{ path('app_travel_view', {id: travel.id}) }}">Voir</a> -
+                <a href="{{ path('app_travel_edit', {id: travel.id}) }}">Modifier</a> -
+                <a href="{{ path('app_travel_delete', {id: travel.id}) }}"
+                   onclick="return confirm('Confirmez-vous la suppression ?')">Supprimer</a>
+            </p>
+        {% endfor %}
+
+        <a href="{{ path('app_travel_new') }}"><button>Nouveau voyage</button></a>
+    </div>
+
+{% endblock %}

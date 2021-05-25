@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle étape{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Nouvelle étape</h1>
+    </div>
+    <div>
+        {{ form(form) }}
+        <a href="{{ path('app_travel_view', {id: travelId}) }}"><button>Annuler</button></a>
+    </div>
+{% endblock %}
